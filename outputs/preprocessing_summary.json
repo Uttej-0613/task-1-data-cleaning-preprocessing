@@ -1,0 +1,75 @@
+{
+  "dataset": "Titanic-Dataset.csv",
+  "source": "Assignment's Yasser H. Kaggle Titanic dataset; public CSV mirror",
+  "input_rows": 891,
+  "input_columns": 12,
+  "missing_values_before": {
+    "PassengerId": 0,
+    "Survived": 0,
+    "Pclass": 0,
+    "Name": 0,
+    "Sex": 0,
+    "Age": 177,
+    "SibSp": 0,
+    "Parch": 0,
+    "Ticket": 0,
+    "Fare": 0,
+    "Cabin": 687,
+    "Embarked": 2
+  },
+  "dropped_columns": [
+    "Cabin",
+    "PassengerId",
+    "Name",
+    "Ticket"
+  ],
+  "imputation": {
+    "Age": "median within Pclass, then overall median",
+    "Fare": "median (14.4542)",
+    "Embarked": "mode (S)"
+  },
+  "outlier_rule": "1.5 × IQR on Age and Fare; remove a row if either feature is outside its fences",
+  "outlier_bounds": {
+    "Age": {
+      "q1": 22,
+      "q3": 37,
+      "lower": -0.5,
+      "upper": 59.5
+    },
+    "Fare": {
+      "q1": 7.9104,
+      "q3": 31,
+      "lower": -26.724,
+      "upper": 65.6344
+    }
+  },
+  "rows_before_outlier_filter": 891,
+  "rows_removed_as_outliers": 136,
+  "rows_after_outlier_filter": 755,
+  "categorical_encoding": "One-hot encoding; reference categories Sex=female and Embarked=C",
+  "standardized_features": {
+    "Age": {
+      "mean": 27.363907284768214,
+      "sd": 11.594751871355044
+    },
+    "Fare": {
+      "mean": 17.65345947019867,
+      "sd": 13.487721391699402
+    }
+  },
+  "final_columns": [
+    "Survived",
+    "Pclass",
+    "Age",
+    "SibSp",
+    "Parch",
+    "Fare",
+    "Sex_male",
+    "Embarked_Q",
+    "Embarked_S"
+  ],
+  "final_rows": 755,
+  "remaining_missing_values": 0,
+  "output_csv": "outputs/titanic_cleaned_encoded_scaled.csv",
+  "execution_note": "Preprocessing operations were executed in a cloud JavaScript runtime against the repository CSV, using pandas-compatible linear quantiles and population-standard-deviation scaling. The committed Python script and notebook are provided for reproducible local execution."
+}
