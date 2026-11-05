@@ -112,3 +112,26 @@ This task demonstrates preprocessing; it does not train a survival classifier. I
 - KaggleHub: https://github.com/Kaggle/kagglehub
 - pandas: https://pandas.pydata.org/docs/
 - scikit-learn preprocessing: https://scikit-learn.org/stable/modules/preprocessing.html
+
+
+## Cloud-generated results (2026-11-05)
+
+The dataset was processed in a cloud runtime and the generated artifacts are committed under `outputs/`.
+
+| Check | Result |
+|---|---:|
+| Original dataset | 891 rows × 12 columns |
+| Rows after preprocessing | 755 |
+| Rows removed by IQR rule | 136 |
+| Missing values in final feature table | 0 |
+
+### Generated artifacts
+- [Cleaned, encoded and standardized CSV](outputs/titanic_cleaned_encoded_scaled.csv)
+- [Execution report](outputs/execution_report.md)
+- [Detailed preprocessing summary (JSON)](outputs/preprocessing_summary.json)
+- [Missing-values chart (SVG)](outputs/missing_values_before.svg)
+- [Boxplots before outlier removal (SVG)](outputs/boxplots_before_outlier_removal.svg)
+- [Boxplots after outlier removal (SVG)](outputs/boxplots_after_outlier_removal.svg)
+- [Standardized age distribution (SVG)](outputs/age_distribution.svg)
+
+**Execution transparency:** The transformations and artifacts were generated in a cloud JavaScript runtime using the same CSV parsing, median imputation, linear IQR quantiles, one-hot encoding and population-standard-deviation scaling logic. The Python script and notebook are included as reproducible implementations, but the Python interpreter itself was not run in this environment. No ML model was trained.
